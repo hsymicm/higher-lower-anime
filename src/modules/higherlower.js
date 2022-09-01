@@ -11,8 +11,6 @@ const download = function(uri, filename, callback){
     });
 };
 
-
-
 var query = `
 query ($id: Int, $page: Int, $perPage: Int, $sortType: [MediaSort]) {
     Page (page: $page, perPage: $perPage) {
@@ -83,4 +81,5 @@ async function main() {
         if(err) console.log('error', err);
     });;
 }
+
 main()
