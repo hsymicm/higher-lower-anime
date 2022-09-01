@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --color-slate-dark-transparent: 30, 30, 30, 0.6;
+    }
+    html {
+        font-family: 'Roboto', sans-serif;
+    }
+}
+
+@layer components {
+    .base-button {
+        @apply inline-flex justify-center cursor-pointer
+    }
+    .primary-button {
+        @apply base-button w-64 px-5 py-3 font-bold text-3xl transition-all border-[5px] border-white rounded-full bg-transparent
+        text-white hover:bg-white hover:text-button-color-hover 
+        active:bg-slight-white active:border-slight-white active:text-button-color-click
+    }
+    .secondary-button {
+        @apply base-button w-64 px-5 py-3 font-bold text-3xl transition-all border-[5px] border-white bg-white rounded-full
+        text-button-color-idle active:border-slight-white hover:bg-white hover:text-button-color-hover 
+        active:bg-slight-white active:text-button-color-click
+    }
+    .higherlower-button {
+        @apply base-button px-6 py-2 rounded-xl transition-all bg-button-color-idle text-xl text-white font-semibold hover:bg-button-color-hover active:text-slight-white active:bg-button-color-click
+    }
+}
+
+@layer utilities {
+    .scale-global {
+        @apply scale-[.6] xl:scale-75 3xl:scale-100
+    }
+}
