@@ -12,7 +12,13 @@ module.exports = {
     },
     colors: {
       transparent: 'transparent',
-      'white' : '#ffffff',
+      'white' : {
+        DEFAULT : '#ffffff',
+        '90' : 'rgba(255, 255, 255, 0.9)',
+        '75' : 'rgba(255, 255, 255, 0.75)',
+        '50' : 'rgba(255, 255, 255, 0.5)',
+        '25' : 'rgba(255, 255, 255, 0.25)',
+      },
       'slight-white' : '#cdcdcd',
       'green': {
         DEFAULT: '#2ED75D',
@@ -22,6 +28,7 @@ module.exports = {
         DEFAULT: '#D72E2E',
         'hover': '#EC7373',
       },
+      'orange' : '#d7bb2e',
       'slate': {
         DEFAULT: '#1e1e1e',
         'light': '#363636',

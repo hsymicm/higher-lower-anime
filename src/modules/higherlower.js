@@ -68,6 +68,9 @@ async function main() {
             page: i,
             perPage: 50,
         });
+        for(const data of arr) {
+            console.log(data['synonyms'].splice(0, 2))
+        }
         data = [...data, ...arr];
     }
     var dict = JSON.stringify(data, null, 4);

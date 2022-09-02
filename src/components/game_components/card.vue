@@ -13,6 +13,7 @@ export default {
             },
             tweened : 0,
             number : 0,
+            hover : false,
         }
     },
     watch : {
@@ -30,9 +31,9 @@ export default {
             return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") 
         },
         handleTitle(dict) {
-            const title = dict.title.english === null ? dict.title.romaji : dict.title.english
+            const string = dict.title.english === null ? dict.title.romaji : dict.title.english
             const length = 80
-            return title.length > length ? dict.synonyms[0] : title
+            return string.length > length ? string.substring(0, length - 2) + ".." : string
         }, 
 
     },
@@ -46,7 +47,15 @@ export default {
         },
         dataNumber : {
             type: Number,
-            default : 999999
+            default : 999999,
+        },
+        dataRating : {
+            type: Number,
+            default : 0,
+        },
+        dataGenres : {
+            type : Array,
+            default : []
         },
         imgSource : String,
         hideButton : {
@@ -67,20 +76,35 @@ export default {
 
 <template>
     <div class="rounded-3xl bg-slate h-[38rem]">
-        <div class="relative rounded-t-3xl w-[25rem] h-[32rem]">
-            <div class="absolute bottom-0 left-0 z-20 px-10 py-8">
+        
+        <div class="relative rounded-t-3xl w-[25rem] h-[32rem]" 
+        v-on:mouseover="this.hover = true" v-on:mouseleave="this.hover = false">
+            
+            <div class="bottom-0 absolute left-0 z-20 px-10 py-8">
                 <p class=" text-white font-bold text-2xl leading-relaxed">
                     {{ handleTitle(animeTitle) }}
                 </p>
+                <ul class="flex flex-row flex-grow-0 flex-wrap mt-4 mb-2" v-if="this.hover">
+                    <li class="bg-white text-slate font-semibold text-lg px-4 py-1 mb-2 mr-2 rounded-xl" v-for="data of this.dataGenres">
+                        {{ data }}
+                    </li>
+                </ul>
             </div>
 
-            <div class="absolute opacity-75 
-            bg-gradient-to-t from-slate-dark via-transparent to-transparent 
-            z-10 h-full w-full"></div>
+            <div v-if="this.hover" :class="[dataRating >= 75 ? 'bg-green' : dataRating < 50 ? 'bg-red' : 'bg-orange', 'absolute top-0 right-0 z-30 rounded-tr-3xl rounded-bl-3xl']">
+                <p class="text-white font-semibold text-3xl mx-5 my-4">{{ this.dataRating }}</p>
+            </div>
 
+            <div :class="[
+                this.hover ? 'opacity-[0.60] bg-slate-dark' : 'opacity-75 bg-gradient-to-t from-slate-dark via-transparent to-transparent', 
+                'absolute rounded-t-3xl z-10 h-full w-full'
+                ]">
+            </div>
+        
             <img class="absolute rounded-t-3xl 
             w-[25rem] h-[32rem] object-cover" 
             :src="imgSource" alt="coverImg">
+            
 
         </div>
         <div class="w-[25rem] h-24 px-10">

@@ -81,9 +81,11 @@
     
             <!-- FIRST CARD -->
             <cardTemplate :key="card1Data" v-if="!isGameOver"
-            v-bind:animeTitle="card1Data" 
-            v-bind:dataNumber="card1Data.popularity" 
-            v-bind:imgSource="card1Data.coverImage.large" 
+            v-bind:anime-title="card1Data" 
+            v-bind:data-genres="card1Data.genres"
+            v-bind:data-rating="card1Data.averageScore"
+            v-bind:data-number="card1Data.popularity" 
+            v-bind:img-source="card1Data.coverImage.large" 
             />
 
             <!-- MIDDLE PART -->
@@ -126,11 +128,13 @@
 
             <!-- SECOND CARD -->
             <cardTemplate :key="card2Data" v-if="!isGameOver" v-on:choiceButtonClicked="checkChoice"
-            v-bind:animeTitle="card2Data" 
-            v-bind:dataNumber="card2Data.popularity" 
-            v-bind:imgSource="card2Data.coverImage.large" 
-            v-bind:hideButton=false
-            v-bind:showData=false />
+            v-bind:anime-title="card2Data" 
+            v-bind:data-genres="card2Data.genres"
+            v-bind:data-number="card2Data.popularity" 
+            v-bind:data-rating="card2Data.averageScore"
+            v-bind:img-source="card2Data.coverImage.large" 
+            v-bind:hide-button=false
+            v-bind:show-data=false />
 
         </div>
     </div>
