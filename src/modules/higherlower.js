@@ -29,12 +29,6 @@ query ($id: Int, $page: Int, $perPage: Int, $sortType: [MediaSort]) {
 }
 `;
 
-var variables = {
-    sortType: ["POPULARITY_DESC"],
-    page: 1,
-    perPage: 50,
-};
-
 const fetchData = async function(query, variables) {
     var url = "https://graphql.anilist.co",
         options = {
@@ -67,16 +61,16 @@ function handleError(error) {
 }
 
 async function main() {
-    let data = []
+    let data = [];
     for(let i = 1; i <= 10; i++) {
         const arr = await fetchData(query, {
             sortType: ["POPULARITY_DESC"],
             page: i,
             perPage: 50,
         });
-        data = [...data, ...arr]
+        data = [...data, ...arr];
     }
-    var dict = JSON.stringify(data, null, 4)
+    var dict = JSON.stringify(data, null, 4);
     fs.writeFile("data.json", dict, function(err, result) {
         if(err) console.log('error', err);
     });;
