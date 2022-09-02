@@ -35,7 +35,6 @@ export default {
             const length = 80
             return string.length > length ? string.substring(0, length - 2) + ".." : string
         }, 
-
     },
     components :{
         buttonTemplate,
@@ -84,7 +83,7 @@ export default {
                 <p class=" text-white font-bold text-2xl leading-relaxed">
                     {{ handleTitle(animeTitle) }}
                 </p>
-                <ul class="flex flex-row flex-grow-0 flex-wrap mt-4 mb-2" v-if="this.hover">
+                <ul class="flex flex-row flex-grow-0 flex-wrap mt-4 mb-2" v-if="this.hover && dataGenres.length > 0">
                     <li class="bg-white text-slate font-semibold text-lg px-4 py-1 mb-2 mr-2 rounded-xl" v-for="data of dataGenres">
                         {{ data }}
                     </li>
@@ -92,7 +91,7 @@ export default {
             </div>
 
             <div v-if="this.hover" :class="[dataRating >= 75 ? 'bg-green' : dataRating < 50 ? 'bg-red' : 'bg-orange', 'absolute top-0 right-0 z-30 rounded-tr-3xl rounded-bl-3xl']">
-                <p class="text-white font-semibold text-3xl mx-5 my-4">{{ dataRating }}</p>
+                <p class="text-white font-semibold text-3xl mx-5 my-4">{{ dataRating || 'NA'}}</p>
             </div>
 
             <div :class="[
@@ -103,8 +102,7 @@ export default {
         
             <img class="absolute rounded-t-3xl 
             w-[25rem] h-[32rem] object-cover" 
-            :src="imgSource" alt="coverImg">
-            
+            :src="imgSource" alt="coverImg">   
 
         </div>
         <div class="w-[25rem] h-24 px-10">
