@@ -1,41 +1,41 @@
 <script>
-  import homeComponent from '@/components/home.vue';
-  import footerComponent from '@/components/footer.vue';
-  import gameComponent from '@/components/game.vue';
+import homeComponent from '@/components/home.vue';
+import footerComponent from '@/components/footer.vue';
+import gameComponent from '@/components/game.vue';
 
-  export default {
-    name : "App",
-    data() {
-      return {
-        gameState : false,
-        refresh : true,
-        modes : [
-          'Popularity',
-          'Favourites',
-        ],
-        index: 0,
-      }
+export default {
+  name : "App",
+  data() {
+    return {
+      gameState : false,
+      refresh : true,
+      modes : [
+        'Popularity',
+        'Favourites',
+      ],
+      index: 0,
+    }
+  },
+  methods : {
+    setGameState() {
+      this.gameState = !this.gameState
     },
-    methods : {
-      setGameState() {
-        this.gameState = !this.gameState
-      },
-      refreshGame() {
-        this.refresh = !this.refresh
-      },
-      setMode(page) {
-        const totalMode = this.modes.length
-        let i = this.index
-        page === "next" ? i++ : i--
-        this.index = i < 0 ? totalMode - 1 : i % totalMode
-      },
+    refreshGame() {
+      this.refresh = !this.refresh
     },
-    components : {
-      homeComponent,
-      footerComponent,
-      gameComponent,
+    setMode(page) {
+      const totalMode = this.modes.length
+      let i = this.index
+      page === "next" ? i++ : i--
+      this.index = i < 0 ? totalMode - 1 : i % totalMode
     },
-  }
+  },
+  components : {
+    homeComponent,
+    footerComponent,
+    gameComponent,
+  },
+}
 </script>
 
 <template>
