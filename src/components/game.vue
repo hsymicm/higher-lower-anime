@@ -1,7 +1,7 @@
 <script>
-    import cardTemplate from './game_components/card.vue'
-    import buttonTemplate from './button.vue'
-    import arr from '../modules/data.json'
+    import cardTemplate from '@/components/game_components/card.vue'
+    import buttonTemplate from '@/components/button.vue'
+    import arr from '@/modules/data.json'
 
     const getIndex = () => {
         return Math.floor(Math.random() * arr.length)
@@ -9,6 +9,10 @@
 
     export default {
         name: "Game",
+        components: {
+            buttonTemplate,
+            cardTemplate,
+        },
         data() {
             return {
                 isGameOver : false,
@@ -22,7 +26,7 @@
             }
         },
         created() {
-            this.highScore = localStorage.getItem('highscore')
+            this.highScore = localStorage.getItem('highscore') ?? 0
             this.first_index = getIndex()
             while(true){
                 this.second_index = getIndex()
@@ -31,10 +35,6 @@
             this.card1Data = arr[this.first_index]
             this.card2Data = arr[this.second_index]
             },
-        components: {
-            buttonTemplate,
-            cardTemplate,
-        },
         methods: { 
             updateCard() {
                 let new_index = 0
@@ -62,15 +62,11 @@
                 } else {
                     this.choiceState = 'wrong' 
                     setTimeout(() => {this.isGameOver = !this.isGameOver, this.choiceState = ''}, 2000)
-                    
                 }
             },
             resetAllData() {
                 this.$emit('resetAll')
             },
-            mounted() {
-                
-            }
         }
     };
 </script>
@@ -81,17 +77,17 @@
     
             <!-- FIRST CARD -->
             <cardTemplate :key="card1Data" v-if="!isGameOver"
-            v-bind:anime-title="card1Data" 
-            v-bind:data-genres="card1Data.genres"
-            v-bind:data-rating="card1Data.averageScore"
-            v-bind:data-number="card1Data.popularity" 
-            v-bind:img-source="card1Data.coverImage.large" 
+            v-bind:info="card1Data"
+            v-bind:anime-title="card1Data"
             />
 
             <!-- MIDDLE PART -->
             <div class="flex flex-col grow-0 justify-end w-[24rem] h-[38rem]">
                 <!-- DISPLAY VS -->
-                <div v-if="!isGameOver" :class="[choiceState === 'correct' ? 'bg-green' : (choiceState === 'wrong' ? 'bg-red' : 'bg-white'), 'mx-auto mt-32 mb-12 w-24 h-24 rounded-full transition-colors duration-300']">
+                <div v-if="!isGameOver" :class="[
+                    choiceState === 'correct' ? 'bg-green' : (choiceState === 'wrong' ? 'bg-red' : 'bg-white'), 
+                    'mx-auto mt-32 mb-12 w-24 h-24 rounded-full transition-colors duration-300'
+                    ]">
                     <div class="relative top-[50%] translate-y-[-50%]">
                         <p v-if="choiceState === ''" class="text-center text-5xl font-extrabold text-slate">VS</p>
                         <font-awesome-icon v-if="choiceState === 'correct'" class="relative left-[50%] translate-x-[-50%] text-5xl text-white" icon="check" transform="down-1" />
@@ -117,7 +113,7 @@
                 <p class="text-2xl leading-loose 
                 text-white text-center font-semibold mx-auto my-4">
                     High Score:<br />
-                    <span class="text-5xl">{{ highScore || 0 }}</span>
+                    <span class="text-5xl">{{ highScore }}</span>
                 </p>
                 <p class="text-2xl leading-loose 
                 text-white text-center font-semibold mx-auto mt-4 mb-12">
@@ -128,11 +124,8 @@
 
             <!-- SECOND CARD -->
             <cardTemplate :key="card2Data" v-if="!isGameOver" v-on:choiceButtonClicked="checkChoice"
-            v-bind:anime-title="card2Data" 
-            v-bind:data-genres="card2Data.genres"
-            v-bind:data-number="card2Data.popularity" 
-            v-bind:data-rating="card2Data.averageScore"
-            v-bind:img-source="card2Data.coverImage.large" 
+            v-bind:info="card2Data"
+            v-bind:anime-title="card2Data"
             v-bind:hide-button=false
             v-bind:show-data=false />
 

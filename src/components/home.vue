@@ -1,5 +1,5 @@
 <script>
-import buttonTemplate from "./button.vue";
+import buttonTemplate from "@/components/button.vue";
 export default {
     name: "Home",
     data() {
@@ -14,7 +14,7 @@ export default {
         
     },
     mounted() {
-        this.highScore = localStorage.getItem('highscore') || 0
+        this.highScore = localStorage.getItem('highscore') ?? 0
     }
 };
 </script>
