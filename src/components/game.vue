@@ -25,6 +25,12 @@
                 choiceState : '',
             }
         },
+        props: {
+            gameMode : {
+                type : String,
+                required : true,
+            },
+        },
         created() {
             this.highScore = localStorage.getItem('highscore') ?? 0
             this.first_index = getIndex()
@@ -48,8 +54,9 @@
                 this.card2Data = arr[this.second_index]
             },
             checkChoice(check) {
-                const data1 = this.card1Data.popularity
-                const data2 = this.card2Data.popularity
+                console.log(this.gameMode)
+                const data1 = this.card1Data[this.gameMode.toLowerCase()]
+                const data2 = this.card2Data[this.gameMode.toLowerCase()]
                 let choice = ''
                 if(data1 < data2) choice = 'higher'
                 else choice = 'lower'
@@ -78,7 +85,7 @@
             <!-- FIRST CARD -->
             <cardTemplate :key="card1Data" v-if="!isGameOver"
             v-bind:info="card1Data"
-            v-bind:anime-title="card1Data"
+            :data-type="gameMode"
             />
 
             <!-- MIDDLE PART -->
@@ -125,7 +132,7 @@
             <!-- SECOND CARD -->
             <cardTemplate :key="card2Data" v-if="!isGameOver" v-on:choiceButtonClicked="checkChoice"
             v-bind:info="card2Data"
-            v-bind:anime-title="card2Data"
+            :data-type="gameMode"
             v-bind:hide-button=false
             v-bind:show-data=false />
 

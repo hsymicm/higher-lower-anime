@@ -9,6 +9,11 @@
       return {
         gameState : false,
         refresh : true,
+        modes : [
+          'Popularity',
+          'Favourites',
+        ],
+        index: 0,
       }
     },
     methods : {
@@ -17,6 +22,12 @@
       },
       refreshGame() {
         this.refresh = !this.refresh
+      },
+      setMode(page) {
+        const totalMode = this.modes.length
+        let i = this.index
+        page === "next" ? i++ : i--
+        this.index = i < 0 ? totalMode - 1 : i % totalMode
       },
     },
     components : {
@@ -45,7 +56,10 @@
       leave-from-class="opacity-100 scale-100"
       leave-to-class="transform opacity-0 blur scale-[95%] translate-y-8"
       >
-        <homeComponent v-if="!gameState" v-on:buttonStartClick="setGameState" />
+        <homeComponent v-if="!gameState" 
+        :gameMode="modes[index]"
+        v-on:buttonStartClick="setGameState"
+        v-on:buttonModeClick="setMode" />
       </transition>
       <transition
         enter-active-class="duration-300 ease-out"
@@ -55,7 +69,11 @@
         leave-from-class="opacity-100 scale-100"
         leave-to-class="transform opacity-0 blur scale-[95%] translate-y-8"
       >
-        <gameComponent v-if="gameState" v-on:buttonHomeClick="setGameState" v-on:resetAll="refreshGame" :key="refresh" />
+        <gameComponent v-if="gameState" 
+        :gameMode="modes[index]"
+        v-on:buttonHomeClick="setGameState"
+        v-on:resetAll="refreshGame" 
+        :key="refresh" />
       </transition>
       
       <!-- FOOTER -->

@@ -8,7 +8,7 @@ export default {
             choiceState : true,
             type : {
                 "popularity" : 'views',
-                "favorites" : 'likes',
+                "favourites" : 'likes',
                 "score" : ''
             },
             tweened : 0,
@@ -53,7 +53,7 @@ export default {
         },
         dataType : {
             type: String,
-            default: 'popularity'
+            default: 'Popularity'
         },
         info : {
             type: Object, 
@@ -92,8 +92,7 @@ export default {
         
             <img class="absolute rounded-t-3xl 
             w-[25rem] h-[32rem] object-cover" 
-            :src="info?.coverImage?.large" alt="coverImg">   
-
+            :src="info?.coverImage?.large" alt="coverImg">  
         </div>
         <div class="w-[25rem] h-24 px-10">
             <div class="relative top-[50%] translate-y-[-50%]">
@@ -109,9 +108,9 @@ export default {
                     leave-to-class="transform opacity-0"
                 >
                     <p v-if="showData || !choiceState" class="text-2xl text-white font-semibold">
-                        {{ toCapitalize(dataType) }}: 
-                        <span v-bind="number = info?.[dataType]" class="text-green">
-                            {{ `${formatNumber(tweened.toFixed(0))} ${type?.[dataType]}` }}
+                        {{ dataType }}: 
+                        <span v-bind="number = info?.[dataType.toLowerCase()]" class="text-green">
+                            {{ `${formatNumber(tweened.toFixed(0))} ${type?.[dataType.toLowerCase()]}` }}
                         </span>
                     </p>
                 </transition>
