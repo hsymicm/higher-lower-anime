@@ -7,9 +7,9 @@ export default {
         return {
             choiceState : true,
             type : {
-                "Popularity" : 'views',
-                "Favorites" : 'likes',
-                "Score" : ''
+                "popularity" : 'views',
+                "favorites" : 'likes',
+                "score" : ''
             },
             tweened : 0,
             number : 0,
@@ -27,7 +27,7 @@ export default {
             if(bool) this.$emit('choiceButtonClicked', 'higher')
             else this.$emit('choiceButtonClicked', 'lower')
         },
-        formatNum(val) {
+        formatNumber(val) {
             return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") 
         },
         handleTitle({english, romaji}) {
@@ -35,6 +35,9 @@ export default {
             const length = 80
             return string.length > length ? string.substring(0, length - 2) + ".." : string
         }, 
+        toCapitalize(string) {
+            return string ? string[0].toUpperCase() + string.slice(1) : 'Data';
+        },
     },
     components :{
         buttonTemplate,
@@ -50,7 +53,7 @@ export default {
         },
         dataType : {
             type: String,
-            default: 'Popularity'
+            default: 'popularity'
         },
         info : {
             type: Object, 
@@ -106,9 +109,9 @@ export default {
                     leave-to-class="transform opacity-0"
                 >
                     <p v-if="showData || !choiceState" class="text-2xl text-white font-semibold">
-                        Popularity: 
-                        <span v-bind="number = info?.popularity" class="text-green">
-                            {{ formatNum(tweened.toFixed(0)) }} views
+                        {{ toCapitalize(dataType) }}: 
+                        <span v-bind="number = info?.[dataType]" class="text-green">
+                            {{ `${formatNumber(tweened.toFixed(0))} ${type?.[dataType]}` }}
                         </span>
                     </p>
                 </transition>
