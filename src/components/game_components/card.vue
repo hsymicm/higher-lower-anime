@@ -40,23 +40,6 @@ export default {
         buttonTemplate,
     },
     props: {
-        animeTitle : {
-            type: Object,
-            required: true,
-        },
-        dataNumber : {
-            type: Number,
-            default : 999999,
-        },
-        dataRating : {
-            type: Number,
-            default : 0,
-        },
-        dataGenres : {
-            type : Array,
-            default : []
-        },
-        imgSource : String,
         hideButton : {
             type: Boolean,
             default: true,
