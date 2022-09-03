@@ -8,11 +8,21 @@ import path from 'path'
 export default defineConfig({
   base: '/higher-lower-anime/',
   plugins: [vue()],
+  
   build: {
     emptyOutDir: true,
     rollupOptions: {
+      manualChunks(id) {
+        if (id.includes('node_modules')) {
+          return 'vendor';
+        } else if (id.includes('data.json')) {
+          return 'group-data';
+        }
+        
+      },
       output: {
         entryFileNames: "assets/[name].js",
+        chunkFileNames: "assets/[name].js",
         assetFileNames: "assets/[name].[ext]",
       },
     },
