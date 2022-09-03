@@ -16,10 +16,8 @@ query ($id: Int, $page: Int, $perPage: Int, $sortType: [MediaSort]) {
     Page (page: $page, perPage: $perPage) {
         media (id: $id, sort: $sortType) {
             id
-            title { romaji english native }
-            synonyms
+            title { romaji english }
             coverImage { large:extraLarge }
-            bannerImage 
             genres 
             averageScore 
             favourites
@@ -68,12 +66,9 @@ async function main() {
             page: i,
             perPage: 50,
         });
-        for(const data of arr) {
-            console.log(data['synonyms'].splice(0, 2))
-        }
         data = [...data, ...arr];
     }
-    var dict = JSON.stringify(data, null, 4);
+    var dict = JSON.stringify(data);
     fs.writeFile("data.json", dict, function(err, result) {
         if(err) console.log('error', err);
     });;
