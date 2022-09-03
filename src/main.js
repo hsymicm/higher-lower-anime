@@ -9,9 +9,9 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 
 /* import font awesome icon component */
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faCaretDown, faCaretUp, faPlay, faCheck, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faCaretDown, faCaretUp, faCaretLeft, faCaretRight, faCheck, faXmark } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faPlay, faCaretDown, faCaretUp, faCheck, faXmark)
+library.add(faCaretDown, faCaretUp, faCaretLeft, faCaretRight, faCheck, faXmark)
 
 /* add font awesome icon component */
 createApp(App)
