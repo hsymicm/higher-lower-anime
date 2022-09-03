@@ -13,7 +13,7 @@
 
 @layer components {
     .base-button {
-        @apply inline-flex justify-center cursor-pointer
+        @apply inline-flex justify-center cursor-pointer select-none
     }
     .primary-button {
         @apply base-button w-64 px-5 py-3 font-bold text-3xl transition-all border-[5px] border-white rounded-full bg-transparent
@@ -32,6 +32,6 @@
 
 @layer utilities {
     .scale-global {
-        @apply scale-[.6] xl:scale-75 3xl:scale-100
+        @apply scale-[.55] xl:scale-[.7] 3xl:scale-100
     }
 }
