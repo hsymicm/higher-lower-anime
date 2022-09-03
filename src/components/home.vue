@@ -16,9 +16,11 @@ export default {
             required : true,
         }
     },
-    mounted() {
-        this.highScore = localStorage.getItem('highscore') ?? 0
-    }
+    methods : {
+        setHighscore(mode) {
+            this.highScore = localStorage.getItem(mode.toLowerCase()) ?? 0
+        }
+    },
 };
 </script>
 
@@ -31,7 +33,7 @@ export default {
             <!-- <img src="../assets/img/title.png" alt="Header Title" class="w-[22rem]" /> -->
         </div>
         <p class="text-2xl leading-loose text-white text-center font-semibold mx-auto my-2">
-            High Score:<br /><span class="text-5xl">{{ highScore }}</span>
+            High Score:<br/><span class="text-5xl" v-bind="setHighscore(gameMode)">{{ highScore }}</span>
         </p>
         <div class="flex flex-col justify-center mt-6">
             <div class="relative rounded-full mx-auto w-72 my-2 px-5 py-3 font-bold text-3xl border-[5px] border-white">

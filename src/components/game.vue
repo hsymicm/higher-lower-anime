@@ -32,7 +32,8 @@
             },
         },
         created() {
-            this.highScore = localStorage.getItem('highscore') ?? 0
+            const mode = this.gameMode.toLowerCase()
+            this.highScore = localStorage.getItem(mode) ?? 0
             this.first_index = getIndex()
             while(true){
                 this.second_index = getIndex()
@@ -54,17 +55,17 @@
                 this.card2Data = arr[this.second_index]
             },
             checkChoice(check) {
-                console.log(this.gameMode)
-                const data1 = this.card1Data[this.gameMode.toLowerCase()]
-                const data2 = this.card2Data[this.gameMode.toLowerCase()]
+                const mode = this.gameMode.toLowerCase()
+                const data1 = this.card1Data[mode]
+                const data2 = this.card2Data[mode]
                 let choice = ''
                 if(data1 < data2) choice = 'higher'
                 else choice = 'lower'
                 if(check === choice) {
                     this.choiceState = 'correct' 
                     this.curScore++
-                    if(this.curScore > this.highScore) localStorage.setItem('highscore', parseInt(this.curScore))
-                    this.highScore = localStorage.getItem('highscore')
+                    if(this.curScore > this.highScore) localStorage.setItem(mode, parseInt(this.curScore))
+                    this.highScore = localStorage.getItem(mode)
                     setTimeout(() => {this.updateCard(), this.choiceState = ''}, 2000)
                 } else {
                     this.choiceState = 'wrong' 
