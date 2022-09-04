@@ -24,7 +24,7 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## :wrench: Project Setup
 
-### Install dependecies
+### Install Dependecies
 ```sh
 npm install
 ```
