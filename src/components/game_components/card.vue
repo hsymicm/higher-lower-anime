@@ -58,7 +58,7 @@ export default {
         info : {
             type: Object, 
             required: true,
-        }
+        },
     },
 }
 </script>
