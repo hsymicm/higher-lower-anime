@@ -12,13 +12,7 @@ module.exports = {
     },
     colors: {
       transparent: 'transparent',
-      'white' : {
-        DEFAULT : '#ffffff',
-        '90' : 'rgba(255, 255, 255, 0.9)',
-        '75' : 'rgba(255, 255, 255, 0.75)',
-        '50' : 'rgba(255, 255, 255, 0.5)',
-        '25' : 'rgba(255, 255, 255, 0.25)',
-      },
+      'white' : '#ffffff',
       'slight-white' : '#cdcdcd',
       'green': {
         DEFAULT: '#2ED75D',
@@ -33,7 +27,6 @@ module.exports = {
         DEFAULT: '#1e1e1e',
         'light': '#363636',
         'dark': '#111111',
-        'dark-transparent': 'rgba(var(--color-dark-transparent), <alpha-value>)',
       },
       'button-color': {
         'idle': '#363636',
