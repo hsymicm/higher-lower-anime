@@ -15,7 +15,6 @@ var query = `
 query ($id: Int, $page: Int, $perPage: Int, $sortType: [MediaSort]) {
     Page (page: $page, perPage: $perPage) {
         media (id: $id, sort: $sortType) {
-            id
             title { romaji english }
             coverImage { large:extraLarge }
             genres 
@@ -71,7 +70,7 @@ async function main() {
     var dict = JSON.stringify(data);
     fs.writeFile("data.json", dict, function(err, result) {
         if(err) console.log('error', err);
-    });;
+    });
 }
 
 main()
