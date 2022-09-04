@@ -3,9 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-    :root {
-        --color-slate-dark-transparent: 30, 30, 30, 0.6;
-    }
     html {
         font-family: 'Roboto', sans-serif;
     }
@@ -16,8 +13,8 @@
         @apply inline-flex justify-center cursor-pointer select-none
     }
     .primary-button {
-        @apply base-button w-64 px-5 py-3 font-bold text-3xl transition-all border-[5px] border-white rounded-full bg-transparent
-        text-white hover:bg-white hover:text-button-color-hover 
+        @apply base-button w-64 px-5 py-3 font-bold text-3xl transition-all border-[5px] border-white rounded-full 
+        bg-transparent text-white hover:bg-white hover:text-button-color-hover 
         active:bg-slight-white active:border-slight-white active:text-button-color-click
     }
     .secondary-button {
@@ -26,7 +23,9 @@
         active:bg-slight-white active:text-button-color-click
     }
     .higherlower-button {
-        @apply base-button px-6 py-2 rounded-xl transition-all bg-button-color-idle text-xl text-white font-semibold hover:bg-button-color-hover active:text-slight-white active:bg-button-color-click
+        @apply base-button px-6 py-2 rounded-xl transition-all bg-button-color-idle text-xl text-white font-semibold 
+        hover:bg-button-color-hover active:text-slight-white active:bg-button-color-click 
+        hover:scale-105 hover:drop-shadow-xl active:scale-100 active:drop-shadow-none
     }
 }
 
