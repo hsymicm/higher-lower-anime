@@ -34,10 +34,22 @@ export default {
             const string = english === null ? romaji : english
             const length = 80
             return string.length > length ? string.substring(0, length - 2) + ".." : string
-        }, 
-        toCapitalize(string) {
-            return string ? string[0].toUpperCase() + string.slice(1) : 'Data';
         },
+        getColor(hex) {
+            if(!hex) return '#fff'
+            
+            const limit = 180
+            let rgb = parseInt(hex.substring(1) , 16)   // convert rrggbb to decimal
+            
+            let r = (rgb >> 16) & 0xff  // extract red
+            let g = (rgb >>  8) & 0xff  // extract green
+            let b = (rgb >>  0) & 0xff  // extract blue
+
+            let luma = 0.2126 * r + 0.7152 * g + 0.0722 * b // per ITU-R BT.709 (0..225)
+            const lighten = luma > limit ? 1 : 1 + (limit - luma) / limit * 2
+
+            return `rgb(${r * lighten} ${g * lighten} ${b * lighten})`
+        }
     },
     components :{
         buttonTemplate,
@@ -74,14 +86,21 @@ export default {
                     {{ handleTitle(info?.title) }}
                 </p>
                 <ul class="flex flex-row flex-grow-0 flex-wrap mt-4 mb-2" v-if="hover && info?.genres.length > 0">
-                    <li class="bg-white text-slate font-semibold text-lg px-4 py-1 mb-2 mr-2 rounded-xl" v-for="data of info?.genres">
+                    <li 
+                    v-bind:style="{ backgroundColor: getColor(info?.cover?.color) }" 
+                    class="text-slate font-semibold text-lg px-4 py-1 mb-2 mr-2 rounded-xl" 
+                    v-for="data of info?.genres">
                         {{ data }}
                     </li>
                 </ul>
             </div>
 
-            <div v-if="hover" :class="[info?.averageScore >= 75 ? 'bg-green' : info?.averageScore < 50 ? 'bg-red' : 'bg-orange', 'absolute top-0 right-0 z-30 rounded-tr-3xl rounded-bl-3xl']">
-                <p class="text-white font-semibold text-3xl mx-5 my-4">{{ info?.averageScore ?? 'NA'}}</p>
+            <div 
+            v-if="hover" 
+            :class="[
+                info?.score >= 75 ? 'bg-green' : info?.score < 50 ? 'bg-red' : 'bg-orange',
+                'absolute top-0 right-0 z-30 rounded-tr-3xl rounded-bl-3xl']">
+                <p class="text-white font-semibold text-3xl mx-5 my-4">{{ info?.score ?? 'NA'}}</p>
             </div>
 
             <div :class="[
@@ -92,7 +111,7 @@ export default {
         
             <img class="absolute rounded-t-3xl 
             w-[25rem] h-[32rem] object-cover" 
-            :src="info?.coverImage?.large" alt="coverImg">  
+            :src="info?.cover?.url" alt="image">  
         </div>
         <div class="w-[25rem] h-24 px-10">
             <div class="relative top-[50%] translate-y-[-50%]">
