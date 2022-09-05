@@ -23,8 +23,8 @@ export default {
             isGameOver : false,
             curScore : 0,
             highScore : 0,
-            first_index : 0,
-            second_index : 0,
+            firstIndex : 0,
+            secondIndex : 0,
             card1Data : {},
             card2Data : {},
             choiceState : '',
@@ -39,34 +39,34 @@ export default {
     created() {
         const mode = this.gameMode.toLowerCase()
         this.highScore = localStorage.getItem(mode) ?? 0
-        this.first_index = getIndex()
+        this.firstIndex = getIndex()
         while(true){
-            this.second_index = getIndex()
-            if(this.second_index != this.first_index) break
+            this.secondIndex = getIndex()
+            if(this.secondIndex != this.firstIndex) break
         }
-        const arr1 = arr[this.first_index]
-        const arr2 = arr[this.second_index]
+        const arr1 = arr[this.firstIndex]
+        const arr2 = arr[this.secondIndex]
         for(const image of [arr1, arr2]) {
-            preloadImage(image?.coverImage?.large)
+            preloadImage(image?.cover?.url)
         }
         this.card1Data = arr1
         this.card2Data = arr2
         },
     methods: {
         loadCard() {
-            let new_index = 0
+            let newIndex = 0
             while(true){
-                new_index = getIndex()
-                if(new_index != this.second_index) break
+                newIndex = getIndex()
+                if(newIndex != this.secondIndex) break
             }
-            this.first_index = this.second_index
-            this.second_index = new_index
-            const new_arr = arr[this.second_index]
-            preloadImage(new_arr?.coverImage?.large)            
+            this.firstIndex = this.secondIndex
+            this.secondIndex = newIndex
+            const newArr = arr[this.secondIndex]
+            preloadImage(newArr?.cover?.url)            
         },
         updateCard() {
-            this.card1Data = arr[this.first_index]
-            this.card2Data = arr[this.second_index]
+            this.card1Data = arr[this.firstIndex]
+            this.card2Data = arr[this.secondIndex]
         },
         checkChoice(check) {
             const mode = this.gameMode.toLowerCase()
