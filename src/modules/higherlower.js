@@ -14,11 +14,11 @@ const download = function(uri, filename, callback){
 var query = `
 query ($id: Int, $page: Int, $perPage: Int, $sortType: [MediaSort]) {
     Page (page: $page, perPage: $perPage) {
-        media (id: $id, sort: $sortType) {
-            title { romaji english }
-            coverImage { large:extraLarge }
+        media (id: $id, type: ANIME, sort: $sortType) {
+            title { english romaji }
+            cover:coverImage { url:extraLarge color }
             genres 
-            averageScore 
+            score:averageScore 
             favourites
             popularity
         }
@@ -67,6 +67,7 @@ async function main() {
         });
         data = [...data, ...arr];
     }
+    // console.log(data)
     var dict = JSON.stringify(data);
     fs.writeFile("data.json", dict, function(err, result) {
         if(err) console.log('error', err);
