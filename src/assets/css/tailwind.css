@@ -31,6 +31,6 @@
 
 @layer utilities {
     .scale-global {
-        @apply scale-[.55] xl:scale-[.7] 3xl:scale-100
+        @apply scale-[.55] xl:scale-[.69] 3xl:scale-100
     }
 }
