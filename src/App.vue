@@ -81,6 +81,6 @@ export default {
     </div>
     <div class="absolute bg-gradient-to-t from-slate-dark to-transparent h-3/4 w-screen z-20 inset-x-0 top-0"></div>
     <div class="absolute bg-slate-dark h-[26%] w-screen z-20 inset-x-0 bottom-0"></div>
-    <img src="./assets/img/header_bw.jpg" alt="Background Header" class="bg-cover object-cover min-w-screen min-h-[75%] m-0 p-0">
+    <img src="./assets/img/header_bw.jpg" alt="Background Header" class="bg-cover object-cover w-full min-h-[75%] m-0 p-0">
   </div>
 </template>
