@@ -15,12 +15,12 @@
     .primary-button {
         @apply base-button w-64 px-5 py-3 font-bold text-3xl transition-all border-[5px] border-white rounded-full 
         bg-transparent text-white hover:shadow-lg hover:bg-white hover:shadow-white/25 hover:text-button-color-hover 
-        active:bg-slight-white active:border-slight-white active:text-button-color-click
+        active:bg-slight-white active:border-slight-white active:text-button-color-click active:shadow-none 
     }
     .secondary-button {
         @apply base-button w-64 px-5 py-3 font-bold text-3xl transition-all border-[5px] border-white bg-white rounded-full
         text-button-color-idle active:border-slight-white hover:shadow-lg hover:bg-white hover:shadow-white/25 hover:text-button-color-hover 
-        active:bg-slight-white active:text-button-color-click
+        active:bg-slight-white active:text-button-color-click active:shadow-none 
     }
     .higherlower-button {
         @apply base-button px-6 py-2 rounded-xl transition-all bg-button-color-idle text-xl text-white font-semibold 
