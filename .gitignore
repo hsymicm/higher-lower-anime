@@ -15,6 +15,7 @@ coverage
 *.local 
 higher-lower-anime
 dist
+showcase_img
 
 /cypress/videos/
 /cypress/screenshots/
