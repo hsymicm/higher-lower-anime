@@ -28,17 +28,18 @@ export default {
             card1Data : {},
             card2Data : {},
             choiceState : '',
+            mode : '',
         }
     },
     props: {
         gameMode : {
-            type : String,
+            type : Object,
             required : true,
         },
     },
     created() {
-        const mode = this.gameMode.toLowerCase()
-        this.highScore = localStorage.getItem(mode) ?? 0
+        this.mode = Object.keys(this.gameMode)[0]
+        this.highScore = localStorage.getItem(this.mode) ?? 0
         this.firstIndex = getIndex()
         while(true){
             this.secondIndex = getIndex()
@@ -69,17 +70,16 @@ export default {
             this.card2Data = arr[this.secondIndex]
         },
         checkChoice(check) {
-            const mode = this.gameMode.toLowerCase()
-            const data1 = this.card1Data[mode]
-            const data2 = this.card2Data[mode]
+            const data1 = this.card1Data[this.mode]
+            const data2 = this.card2Data[this.mode]
             let choice = ''
             if(data1 < data2) choice = 'higher'
             else choice = 'lower'
             if(check === choice) {
                 this.choiceState = 'correct' 
                 this.curScore++
-                if(this.curScore > this.highScore) localStorage.setItem(mode, parseInt(this.curScore))
-                this.highScore = localStorage.getItem(mode)
+                if(this.curScore > this.highScore) localStorage.setItem(this.mode, parseInt(this.curScore))
+                this.highScore = localStorage.getItem(this.mode)
                 this.loadCard()
                 setTimeout(() => {this.updateCard(), this.choiceState = ''}, 2000)
             } else {

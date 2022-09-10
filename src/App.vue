@@ -8,10 +8,10 @@ export default {
   data() {
     return {
       gameState : false,
-      refresh : true,
+      refresh : false,
       modes : [
-        'Popularity',
-        'Favourites',
+        { 'popularity' : 'views' },
+        { 'favourites' : 'likes' },
       ],
       index: 0,
     }

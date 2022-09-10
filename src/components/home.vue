@@ -12,13 +12,13 @@ export default {
     },
     props : {
         gameMode : {
-            type : String,
+            type : Object,
             required : true,
         }
     },
     methods : {
         setHighscore(mode) {
-            this.highScore = localStorage.getItem(mode.toLowerCase()) ?? 0
+            this.highScore = localStorage.getItem(Object.keys(mode)[0]) ?? 0
         }
     },
 };
@@ -39,7 +39,7 @@ export default {
             <div class="relative rounded-full mx-auto w-72 my-2 px-5 py-3 font-bold text-3xl border-[5px] border-white">
                 <font-awesome-icon v-on:click="$emit('buttonModeClick', 'prev')" class="absolute left-0 inset-y-0 py-3 px-6 text-white transition-all hover:scale-125 active:scale-90" icon="caret-left" size="lg"/>
                 <p class="mx-12 text-white select-none">
-                    {{ gameMode }}
+                    {{ Object.keys(gameMode)[0].charAt(0).toUpperCase() + Object.keys(gameMode)[0].slice(1) }}
                 </p>
                 <font-awesome-icon v-on:click="$emit('buttonModeClick', 'next')" class="absolute right-0 inset-y-0 py-3 px-6 text-white transition-all hover:scale-125 active:scale-90" icon="caret-right" size="lg"/>
             </div>
