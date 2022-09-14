@@ -17,6 +17,7 @@ higher-lower-anime
 dist
 showcase_img
 src/modules/tests
+src/modules/img
 
 /cypress/videos/
 /cypress/screenshots/
