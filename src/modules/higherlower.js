@@ -4,8 +4,8 @@ import request from 'request';
 
 const download = function(uri, filename, callback){
     request.head(uri, function(err, res, body){
-        console.log('content-type:', res.headers['content-type']);
-        console.log('content-length:', res.headers['content-length']);
+        // console.log('content-type:', res.headers['content-type']);
+        // console.log('content-length:', res.headers['content-length']);
 
         request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
     });
@@ -65,11 +65,21 @@ async function main() {
             page: i,
             perPage: 50,
         });
+        for(const img of arr){
+            const url = img.cover.url
+            const filename = url.split("/").pop()
+            img.cover.filename = filename
+            try{
+                download(url, `img/${filename}`, () => console.log(`DONE - ${filename}`))
+            } catch {
+                console.log(`ERROR - ${filename}`)
+            }
+        }
         data = [...data, ...arr];
     }
     // console.log(data)
     var dict = JSON.stringify(data);
-    fs.writeFile("data.json", dict, function(err, result) {
+    fs.writeFile("data1.json", dict, function(err, result) {
         if(err) console.log('error', err);
     });
 }

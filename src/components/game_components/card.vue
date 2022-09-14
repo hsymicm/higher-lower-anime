@@ -128,7 +128,7 @@ export default {
         
             <img class="absolute rounded-t-3xl 
             w-[25rem] h-[32rem] object-cover" 
-            :src="info?.cover?.url" alt="image">  
+            :src="`@/assets/img/coverImg/${info?.cover?.filename}`" alt="image">  
         </div>
         <div class="w-[25rem] h-24 px-10">
             <div class="relative top-[50%] translate-y-[-50%]">

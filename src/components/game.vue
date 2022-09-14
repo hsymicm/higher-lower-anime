@@ -1,7 +1,7 @@
 <script>
 import cardTemplate from '@/components/game_components/card.vue'
 import buttonTemplate from '@/components/button.vue'
-import arr from '@/modules/data.json'
+import arr from '@/modules/data1.json'
 
 const getIndex = () => {
     return Math.floor(Math.random() * arr.length)
@@ -48,7 +48,7 @@ export default {
         const arr1 = arr[this.firstIndex]
         const arr2 = arr[this.secondIndex]
         for(const image of [arr1, arr2]) {
-            preloadImage(image?.cover?.url)
+            preloadImage(`@/assets/img/coverImg/${image?.cover?.filename}`)
         }
         this.card1Data = arr1
         this.card2Data = arr2
@@ -63,7 +63,7 @@ export default {
             this.firstIndex = this.secondIndex
             this.secondIndex = newIndex
             const newArr = arr[this.secondIndex]
-            preloadImage(newArr?.cover?.url)            
+            preloadImage(`@/assets/img/coverImg/${newArr?.cover?.filename}`)            
         },
         updateCard() {
             this.card1Data = arr[this.firstIndex]
@@ -100,21 +100,27 @@ export default {
     
             <!-- FIRST CARD -->
             <cardTemplate v-if="!isGameOver"
-            v-bind:info="card1Data"
+            :info="card1Data"
             :data-type="gameMode"
             />
 
             <!-- MIDDLE PART -->
             <div class="flex flex-col grow-0 justify-end w-[24rem] h-[38rem]">
+                
                 <!-- DISPLAY VS -->
                 <div v-if="!isGameOver" :class="[
-                    choiceState === 'correct' ? 'bg-green' : (choiceState === 'wrong' ? 'bg-red' : 'bg-white'), 
+                    choiceState === 'correct' ? 'bg-green' : (
+                        choiceState === 'wrong' ? 'bg-red' : 'bg-white'), 
                     'mx-auto mt-32 mb-12 w-24 h-24 rounded-full transition-colors duration-300'
                     ]">
                     <div class="relative top-[50%] translate-y-[-50%]">
                         <p v-if="choiceState === ''" class="text-center text-5xl font-extrabold text-slate">VS</p>
-                        <font-awesome-icon v-if="choiceState === 'correct'" class="relative left-[50%] translate-x-[-50%] text-5xl text-white" icon="check" transform="down-1" />
-                        <font-awesome-icon v-if="choiceState === 'wrong'" class="relative left-[50%] translate-x-[-50%] text-5xl text-white" icon="xmark" />
+                        <font-awesome-icon v-if="choiceState === 'correct'" 
+                        class="relative left-[50%] translate-x-[-50%] text-5xl text-white" 
+                        icon="check" transform="down-1" />
+                        <font-awesome-icon v-if="choiceState === 'wrong'" 
+                        class="relative left-[50%] translate-x-[-50%] text-5xl text-white" 
+                        icon="xmark" />
                     </div>
                 </div>
                 
@@ -147,10 +153,10 @@ export default {
 
             <!-- SECOND CARD -->
             <cardTemplate :key="card2Data" v-if="!isGameOver" v-on:choiceButtonClicked="checkChoice"
-            v-bind:info="card2Data"
+            :info="card2Data"
             :data-type="gameMode"
-            v-bind:hide-button=false
-            v-bind:show-data=false />
+            :hide-button=false
+            :show-data=false />
 
         </div>
     </div>
