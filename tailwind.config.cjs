@@ -16,7 +16,8 @@ module.exports = {
       'slight-white' : '#cdcdcd',
       'green': {
         DEFAULT: '#2ED75D',
-        'hover': '#99F1B2'
+        'hover': '#99F1B2',
+        'click': '#1d8a3b',
       },
       'red': {
         DEFAULT: '#D72E2E',
