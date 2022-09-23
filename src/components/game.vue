@@ -48,7 +48,7 @@ export default {
         const arr1 = arr[this.firstIndex]
         const arr2 = arr[this.secondIndex]
         for(const image of [arr1, arr2]) {
-            preloadImage(`@/assets/img/coverImg/${image?.cover?.filename}`)
+            preloadImage(image?.cover?.url)
         }
         this.card1Data = arr1
         this.card2Data = arr2
@@ -63,7 +63,7 @@ export default {
             this.firstIndex = this.secondIndex
             this.secondIndex = newIndex
             const newArr = arr[this.secondIndex]
-            preloadImage(`@/assets/img/coverImg/${newArr?.cover?.filename}`)            
+            preloadImage(newArr?.cover?.url)            
         },
         updateCard() {
             this.card1Data = arr[this.firstIndex]

@@ -1,16 +1,13 @@
 <template>
-    <button :class="[isHigherLower ? 'higherlower-button' : (isSecondary ? 'secondary-button' : 'primary-button')]">
-        {{ label }}<font-awesome-icon :class="[isHigher ? 'text-green' : 'text-red', isHigherLower ? '' : 'hidden', 'ml-4']" :icon="isHigher? 'caret-up' : 'caret-down'"  :transform="isHigher? 'down-1' : 'up-1'" size="xl" />
+    <button :class="[isSecondary ? 'secondary-button' : 'primary-button',]">
+        <p v-if="label">{{ label }}</p><font-awesome-icon v-if="logoType" :class="[logoColor ?? '', 'h-full']" :icon="logoType" />
     </button>
 </template>
 
 <script>
 export default {
     props: {
-        label : {
-            type : String,
-            default : "Label",
-        },
+        label : String,
         isPrimary : {
             type : Boolean,
             default : true,
@@ -19,11 +16,14 @@ export default {
             type : Boolean,
             default : false,
         },
-        isHigherLower : {
-            type : Boolean,
-            default : false,
+        logoType : {
+            type : String,
+            default : undefined,
         },
-        isHigher : Boolean,
+        logoColor : {
+            type : String,
+            default: undefined,
+        }
     }
 }
 </script>

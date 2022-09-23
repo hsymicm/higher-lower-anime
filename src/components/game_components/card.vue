@@ -1,5 +1,5 @@
 <script>
-import buttonTemplate from "@/components/button.vue"
+import cardButtonTemplate from "@/components/game_components/cardButton.vue"
 import gsap from "gsap"
 
 export default {
@@ -69,7 +69,7 @@ export default {
         }
     },
     components :{
-        buttonTemplate,
+        cardButtonTemplate,
     },
     props: {
         hideButton : {
@@ -128,13 +128,13 @@ export default {
         
             <img class="absolute rounded-t-3xl 
             w-[25rem] h-[32rem] object-cover" 
-            :src="`@/assets/img/coverImg/${info?.cover?.filename}`" alt="image">  
+            :src="info?.cover?.url" alt="image">  
         </div>
         <div class="w-[25rem] h-24 px-10">
             <div class="relative top-[50%] translate-y-[-50%]">
                 <div v-if="!showData && choiceState" class="flex flex-row justify-center">
-                    <buttonTemplate v-on:click="setState(true)" class="m-3" v-bind:isHigherLower="true" label="Higher" v-bind:isHigher="true" />
-                    <buttonTemplate v-on:click="setState(false)" class="m-3" v-bind:isHigherLower="true" label="Lower" />
+                    <cardButtonTemplate v-on:click="setState(true)" class="m-3" label="Higher" v-bind:isHigher="true" />
+                    <cardButtonTemplate v-on:click="setState(false)" class="m-3" label="Lower" />
                 </div>
 
                 <transition
