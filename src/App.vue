@@ -50,11 +50,11 @@ export default {
       <!-- CONTENT -->
       <transition
       enter-active-class="duration-300 ease-out"
-      enter-from-class="transform opacity-0 blur scale-[95%] translate-y-8"
+      enter-from-class="transform opacity-0 scale-[95%] translate-y-8"
       enter-to-class="opacity-100 scale-100"
       leave-active-class="duration-300 ease-in"
       leave-from-class="opacity-100 scale-100"
-      leave-to-class="transform opacity-0 blur scale-[95%] translate-y-8"
+      leave-to-class="transform opacity-0 scale-[95%] translate-y-8"
       >
         <homeComponent v-if="!gameState" 
         :gameMode="modes[index]"
@@ -63,11 +63,11 @@ export default {
       </transition>
       <transition
         enter-active-class="duration-300 ease-out"
-        enter-from-class="transform opacity-0 blur scale-[95%] translate-y-8"
+        enter-from-class="transform opacity-0 scale-[95%] translate-y-8"
         enter-to-class="opacity-100 scale-100"
         leave-active-class="duration-300 ease-in"
         leave-from-class="opacity-100 scale-100"
-        leave-to-class="transform opacity-0 blur scale-[95%] translate-y-8"
+        leave-to-class="transform opacity-0 scale-[95%] translate-y-8"
       >
         <gameComponent v-if="gameState" 
         :gameMode="modes[index]"

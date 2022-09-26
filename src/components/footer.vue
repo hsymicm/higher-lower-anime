@@ -50,13 +50,20 @@ export default {
                 :logoType="val.logoType"
                 class="p-[2px] xl:p-1 3xl:p-[6px] h-8 w-8 xl:h-10 xl:w-10 3xl:h-12 3xl:w-12">
                 </buttonTemplate>
-                <div :ref="key" tabindex="-1" v-on:blur="val.clicked = false" v-if="val.clicked">
+                <transition
+                    enter-active-class="duration-300 ease-out"
+                    enter-from-class="transform opacity-0 translate-y-8"
+                    leave-active-class="duration-100 ease-in"
+                    leave-to-class="transform opacity-0 translate-y-8"
+                >
+                <div :ref="key" tabindex="-1" v-on:blur="val.clicked = false" v-if="val.clicked" class="absolute bottom-[140%] left-0">
                     <langComponent v-if="key === 'lang'"
                     v-on:langChange="(lang) => {this.media.lang.value = lang}"
                     v-bind:prefLang="this.media.lang.value" />
                     <infoComponent v-if="key === 'info'" />
                     <shareComponent v-if="key === 'share'" />
                 </div>
+                </transition>
             </div>
         </div>
         <div class="flex flex-col m-auto text-white text-center text-sm xl:text-lg 3xl:text-xl font-semibold">

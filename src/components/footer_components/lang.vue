@@ -51,8 +51,8 @@
                 v-for="(val, key) in this.lang" 
                 v-on:click="$emit('langChange', key)"
                 :class="[
-                    key === prefLang ? 'bg-green text-slate' : '', 
-                    'text-white py-1 px-3 text-lg font-bold rounded-lg mr-4'
+                    key === prefLang ? 'bg-green text-slate' : 'bg-slate hover:bg-slate-light active:bg-slate', 
+                    'transition-all text-white py-1 px-3 text-lg font-bold rounded-lg mr-4'
                     ]"
                 >
                     {{val}}
