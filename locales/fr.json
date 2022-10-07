@@ -1,0 +1,45 @@
+{
+    "webTitle": "Supérieur Inférieur - Version Anime",
+    "scores": {
+        "curScore": "Score actuel",
+        "hiScore": "Score élevé"
+    },
+    "modes": [
+        "Popularité",
+        "Favoris"
+    ],
+    "buttons": {
+        "start": "Début",
+        "high": "Supérieure",
+        "low": "Inférieure",
+        "tryAgain": "Réessayer",
+        "home": "Accueil",
+        "wrongGuess": "Faux!"
+    },
+    "footer": {
+        "share": {
+            "copy": "Copié dans le presse-papier !"
+        },
+        "credit": {
+            "name": "Produit par",
+            "data": "Données du"
+        },
+        "info": {
+            "title": "Règles du jeu",
+            "steps": [
+                {
+                    "title": "Vérifier la carte.",
+                    "content": "Regardez le titre de l'e-mail."
+                },
+                {
+                    "title": "Vérifier la carte.",
+                    "content": "Regardez le titre de l'e-mail."
+                },
+                {
+                    "title": "Supérieur ou inférieur",
+                    "content": "Comparez le titre de l'anime et devinez si le deuxième anime est supérieur ou inférieur en fonction des premières données."
+                }
+            ]
+        }
+    }
+}

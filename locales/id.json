@@ -1,0 +1,45 @@
+{
+    "webTitle": "Lebih Rendah Lebih Tinggi - Versi Anime",
+    "scores": {
+        "curScore": "Skor Saat Ini",
+        "hiScore": "Skor Tinggi"
+    },
+    "modes": [
+        "Popularitas",
+        "Favorit"
+    ],
+    "buttons": {
+        "start": "Mulai",
+        "high": "Tinggi",
+        "low": "Rendah",
+        "tryAgain": "Coba Lagi",
+        "home": "Beranda",
+        "wrongGuess": "Jawaban Salah!"
+    },
+    "footer": {
+        "share": {
+            "copy": "Disalin ke papan klip"
+        },
+        "credit": {
+            "name": "Dibuat oleh",
+            "data": "Data dari"
+        },
+        "info": {
+            "title": "Cara Bermain",
+            "steps": [
+                {
+                    "title": "Periksa Kartu Pertama",
+                    "content": "Lihatlah judul sekaligus data di dalam kartu pertama."
+                },
+                {
+                    "title": "Periksa Kartu Kedua",
+                    "content": "Lihatlah judul di dalam kartu kedua."
+                },
+                {
+                    "title": "Pilih Lebih Tinggi atau Lebih Rendah",
+                    "content": "Bandingkan kedua judul anime dan tebak apakah data kedua lebih tinggi atau lebih rendah daripada data pertama."
+                }
+            ]
+        }
+    }
+}

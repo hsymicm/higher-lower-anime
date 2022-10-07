@@ -1,0 +1,45 @@
+{
+    "webTitle": "Higher Lower - Versión Anime",
+    "scores": {
+        "curScore": "Puntuación actual",
+        "hiScore": "Puntuación Alta"
+    },
+    "modes": [
+        "Popularidad",
+        "Favoritos"
+    ],
+    "buttons": {
+        "start": "Start",
+        "high": "Superior",
+        "low": "Inferior",
+        "tryAgain": "Volver a intentarlo",
+        "home": "Home",
+        "wrongGuess": "¡Adivina mal!"
+    },
+    "footer": {
+        "share": {
+            "copy": "¡Copiado en el portapapeles!"
+        },
+        "credit": {
+            "name": "Hecho por",
+            "data": "Datos de"
+        },
+        "info": {
+            "title": "Cómo jugar",
+            "steps": [
+                {
+                    "title": "Compruebe la primera tarjeta",
+                    "content": "Mira el título y los datos dentro de la primera tarjeta."
+                },
+                {
+                    "title": "Compruebe la segunda tarjeta",
+                    "content": "Mira el título dentro de la segunda carta."
+                },
+                {
+                    "title": "Elija más alto o más bajo",
+                    "content": "Compara el título del anime y adivina si el segundo anime es más alto o más bajo según los primeros datos."
+                }
+            ]
+        }
+    }
+}
