@@ -4,10 +4,10 @@
         "curScore": "現在のスコア",
         "hiScore": "高スコア"
     },
-    "modes": [
-        "人気",
-        "お気に入り"
-    ],
+    "modes": {
+        "popularity" : "人気",
+        "favourites" : "お気に入り"
+    },
     "buttons": {
         "start": "スタート",
         "high": "以上",
@@ -21,8 +21,8 @@
             "copy": "クリップボードにコピーされました!"
         },
         "credit": {
-            "name": "によって行われたすべての予約の削除",
-            "data": "データ元："
+            "name": "作られた",
+            "data": "データ元"
         },
         "info": {
             "title": "遊び方",

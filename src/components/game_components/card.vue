@@ -133,8 +133,8 @@ export default {
         <div class="w-[25rem] h-24 px-10">
             <div class="relative top-[50%] translate-y-[-50%]">
                 <div v-if="!showData && choiceState" class="flex flex-row justify-center">
-                    <cardButtonTemplate v-on:click="setState(true)" class="m-3" label="Higher" v-bind:isHigher="true" />
-                    <cardButtonTemplate v-on:click="setState(false)" class="m-3" label="Lower" />
+                    <cardButtonTemplate v-on:click="setState(true)" class="m-3" label="buttons.high" v-bind:isHigher="true" />
+                    <cardButtonTemplate v-on:click="setState(false)" class="m-3" label="buttons.low" />
                 </div>
 
                 <transition
@@ -144,7 +144,7 @@ export default {
                     leave-to-class="transform opacity-0"
                 >
                     <p v-if="showData || !choiceState" class="text-2xl text-white font-semibold">
-                        {{ Object.keys(dataType)[0].charAt(0).toUpperCase() + Object.keys(dataType)[0].slice(1) }}: 
+                        {{ $t(`modes.${Object.keys(dataType)[0]}`) }}: 
                         <span v-bind="number = info?.[Object.keys(dataType)[0]]" class="text-green">
                             {{ `${formatNumber(tweened.toFixed(0))} ${Object.values(dataType)[0]}` }}
                         </span>

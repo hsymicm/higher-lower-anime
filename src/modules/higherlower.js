@@ -4,9 +4,6 @@ import request from 'request';
 
 const download = function(uri, filename, callback){
     request.head(uri, function(err, res, body){
-        // console.log('content-type:', res.headers['content-type']);
-        // console.log('content-length:', res.headers['content-length']);
-
         request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
     });
 };
@@ -39,7 +36,6 @@ const fetchData = async function(query, variables) {
                 variables: variables,
             }),
         };
-
     return fetch(url, options).then(handleResponse).then(handleData).catch(handleError);
 }
 
@@ -77,7 +73,6 @@ async function main() {
         }
         data = [...data, ...arr];
     }
-    // console.log(data)
     var dict = JSON.stringify(data);
     fs.writeFile("data1.json", dict, function(err, result) {
         if(err) console.log('error', err);

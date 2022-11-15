@@ -12,7 +12,7 @@ export default {
                 lang : {
                     logoType : 'globe',
                     clicked : false,
-                    value : 'en',
+                    value : localStorage.getItem('prefLang'),
                 },
                 info : {
                     logoType : 'gamepad',
@@ -32,6 +32,11 @@ export default {
         infoComponent,
     },
     methods : {
+        handleLang(lang) {
+            this.media.lang.value = lang
+            localStorage.setItem('prefLang', lang)
+            this.$i18n.locale = lang
+        },
         handleClick(ref) {
             this.media[ref].clicked = true
             this.$nextTick(() => this.$refs[ref][0].focus())
@@ -58,7 +63,7 @@ export default {
                 >
                 <div :ref="key" tabindex="-1" v-on:blur="val.clicked = false" v-if="val.clicked" class="absolute bottom-[140%] left-0">
                     <langComponent v-if="key === 'lang'"
-                    v-on:langChange="(lang) => {this.media.lang.value = lang}"
+                    v-on:langChange="handleLang"
                     v-bind:prefLang="this.media.lang.value" />
                     <infoComponent v-if="key === 'info'" />
                     <shareComponent v-if="key === 'share'" />
@@ -68,13 +73,13 @@ export default {
         </div>
         <div class="flex flex-col m-auto text-white text-center text-sm xl:text-lg 3xl:text-xl font-semibold">
             <p>
-                Made by 
+                {{ $t('footer.credit.name') }} 
                 <a href="https://github.com/hsymicm/higher-lower-anime" target="_blank" class="transition-colors text-green hover:text-green-hover active:text-green">
                     Fadil Hisyam
                 </a>
             </p>
             <p>
-                Data from 
+                {{ $t('footer.credit.data') }} 
                 <a href="https://github.com/AniList/ApiV2-GraphQL-Docs" target="_blank" class="transition-colors text-red hover:text-red-hover active:text-red">
                     Anilist
                 </a>

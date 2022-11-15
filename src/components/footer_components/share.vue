@@ -32,7 +32,7 @@ export default {
                 </a>
                 <div class="relative inline-block h-10 w-10 cursor-pointer">
                     <span v-show="copyState" class="absolute bg-slate-light bottom-[120%] text-white text-center left-1/2 w-48 -ml-24 p-1 rounded-lg">
-                        {{'Copied to clipboard!'}}
+                        {{ $t('footer.share.copy') }}
                     </span>
                     <img v-on:click="copyLink()" src="@/assets/img/link.png" class="h-10 object-cover transition-all hover:brightness-[1.2] active:brightness-[1.0]">
                 </div>

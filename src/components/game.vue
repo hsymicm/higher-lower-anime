@@ -132,21 +132,21 @@ export default {
                     leave-to-class="transform opacity-0"
                 >
                     <div v-if="isGameOver" class="flex flex-col justify-center">
-                        <p class="my-6 text-5xl text-center text-white font-extrabold">Wrong Guess!</p>
-                        <buttonTemplate v-on:click="resetAllData" class="mx-auto my-4" label="Try Again" v-bind:isSecondary="true" />
-                        <buttonTemplate v-on:click="$emit('buttonHomeClick')" class="mx-auto mb-10" label="Home" />
+                        <p class="my-6 text-5xl text-center text-white font-extrabold">{{ $t('buttons.wrongGuess') }}</p>
+                        <buttonTemplate v-on:click="resetAllData" class="mx-auto my-4" label="buttons.tryAgain" v-bind:isSecondary="true" />
+                        <buttonTemplate v-on:click="$emit('buttonHomeClick')" class="mx-auto mb-10" label="buttons.home" />
                     </div>
                 </transition>
 
                 <!-- DISPLAY PLAYER SCORE -->
                 <p class="text-2xl leading-loose 
                 text-white text-center font-semibold mx-auto my-4">
-                    High Score:<br />
+                    {{$t('scores.hiScore')}}:<br />
                     <span class="text-5xl">{{ highScore }}</span>
                 </p>
                 <p class="text-2xl leading-loose 
                 text-white text-center font-semibold mx-auto mt-4 mb-12">
-                    Current Score:<br />
+                    {{$t('scores.curScore')}}:<br />
                     <span class="text-5xl">{{ curScore }}</span>
                 </p>
             </div>

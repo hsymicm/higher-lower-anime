@@ -2,12 +2,12 @@
     "webTitle": "Lebih Rendah Lebih Tinggi - Versi Anime",
     "scores": {
         "curScore": "Skor Saat Ini",
-        "hiScore": "Skor Tinggi"
+        "hiScore": "Skor Tertinggi"
     },
-    "modes": [
-        "Popularitas",
-        "Favorit"
-    ],
+    "modes": {
+        "popularity" : "Popularitas",
+        "favourites" : "Favorit"
+    },
     "buttons": {
         "start": "Mulai",
         "high": "Tinggi",

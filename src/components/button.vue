@@ -1,6 +1,6 @@
 <template>
     <button :class="[isSecondary ? 'secondary-button' : 'primary-button',]">
-        <p v-if="label">{{ label }}</p><font-awesome-icon v-if="logoType" :class="[logoColor ?? '', 'h-full']" :icon="logoType" />
+        <p v-if="label">{{ $t(label) }}</p><font-awesome-icon v-if="logoType" :class="[logoColor ?? '', 'h-full']" :icon="logoType" />
     </button>
 </template>
 

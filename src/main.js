@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import i18n from '@/i18n.js'
 import App from '@/App.vue'
 import '@/assets/css/tailwind.css'
 
@@ -35,5 +36,6 @@ library.add(
 
 /* add font awesome icon component */
 createApp(App)
+.use(i18n)
 .component('font-awesome-icon', FontAwesomeIcon)
 .mount('#app')

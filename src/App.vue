@@ -1,10 +1,18 @@
 <script>
-import homeComponent from '@/components/home.vue';
-import footerComponent from '@/components/footer.vue';
-import gameComponent from '@/components/game.vue';
+import homeComponent from '@/components/home.vue'
+import footerComponent from '@/components/footer.vue'
+import gameComponent from '@/components/game.vue'
 
 export default {
   name : "App",
+  beforeMount() {
+    let prefLang = localStorage.getItem('prefLang')
+    if(!prefLang) {
+      prefLang = 'en'
+      localStorage.setItem('prefLang', prefLang)
+    }
+    this.$i18n.locale = prefLang
+  },
   data() {
     return {
       gameState : false,

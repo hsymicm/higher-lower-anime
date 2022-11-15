@@ -4,10 +4,10 @@
         "curScore": "Puntuación actual",
         "hiScore": "Puntuación Alta"
     },
-    "modes": [
-        "Popularidad",
-        "Favoritos"
-    ],
+    "modes": {
+        "popularity" : "Popularidad",
+        "favourites" : "Favoritos"
+    },
     "buttons": {
         "start": "Start",
         "high": "Superior",

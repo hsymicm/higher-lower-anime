@@ -1,18 +1,21 @@
 <script>
     export default {
         name: "lang",
+        mounted() {
+            this.$nextTick(() => document.querySelector(`#${this.prefLang}`).scrollIntoView())
+        },
         data() {
             return {
                 lang : {
-                    'cn' : '中文', 
-                    'ds' : 'Deutsch', 
+                    // 'cn' : '中文', 
+                    // 'ds' : 'Deutsch', 
                     'en' : 'English', 
                     'es' : 'Español', 
                     'fr' : 'Français', 
                     'id' : 'Indonesia',
-                    'jp' : '日本語', 
-                    'kr' : '한국어', 
-                    'pr' : 'Português', 
+                    'ja' : '日本語', 
+                    'ko' : '한국어', 
+                    // 'pr' : 'Português', 
                     'ru' : 'Pусский',
                 },
             }
@@ -50,6 +53,7 @@
                 <p
                 v-for="(val, key) in this.lang" 
                 v-on:click="$emit('langChange', key)"
+                v-bind:id="key"
                 :class="[
                     key === prefLang ? 'bg-green text-slate' : 'bg-slate hover:bg-slate-light active:bg-slate', 
                     'transition-all text-white py-1 px-3 text-lg font-bold rounded-lg mr-4'

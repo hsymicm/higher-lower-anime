@@ -32,17 +32,17 @@ export default {
             </svg>
         </div>
         <p class="text-2xl leading-loose text-white text-center font-semibold mx-auto my-2">
-            High Score:<br/><span class="text-5xl" v-bind="setHighscore(gameMode)">{{ highScore }}</span>
+            {{ $t('scores.hiScore') }}:<br/><span class="text-5xl" v-bind="setHighscore(gameMode)">{{ highScore }}</span>
         </p>
         <div class="flex flex-col justify-center mt-6">
-            <div class="relative rounded-full mx-auto w-72 text-center my-2 px-5 py-3 font-bold text-3xl border-[5px] border-white">
+            <div class="relative rounded-full mx-auto min-w-fit w-72 text-center my-2 px-5 py-3 font-bold text-3xl border-[5px] border-white">
                 <font-awesome-icon v-on:click="$emit('buttonModeClick', 'prev')" class="absolute left-0 inset-y-0 py-3 px-6 text-white transition-all hover:scale-125 active:scale-90" icon="caret-left" size="lg"/>
                 <p class="mx-12 text-white select-none">
-                    {{ Object.keys(gameMode)[0].charAt(0).toUpperCase() + Object.keys(gameMode)[0].slice(1) }}
+                    {{ $t(`modes.${Object.keys(gameMode)[0]}`) }}
                 </p>
                 <font-awesome-icon v-on:click="$emit('buttonModeClick', 'next')" class="absolute right-0 inset-y-0 py-3 px-6 text-white transition-all hover:scale-125 active:scale-90" icon="caret-right" size="lg"/>
             </div>
-            <buttonTemplate v-on:click="$emit('buttonStartClick')" class="mx-auto my-2 w-56" label="Start" />
+            <buttonTemplate v-on:click="$emit('buttonStartClick')" class="mx-auto my-2 w-56" label="buttons.start" />
         </div>
     </div>
 </template>
