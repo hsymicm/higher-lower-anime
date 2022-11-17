@@ -125,12 +125,7 @@ export default {
                 </div>
                 
                 <!-- DISPLAY GAME OVER MENU -->
-                <transition
-                    enter-active-class="duration-300 ease-out"
-                    enter-from-class="transform opacity-0"
-                    leave-active-class="duration-300 ease-in"
-                    leave-to-class="transform opacity-0"
-                >
+                <transition name="fade">
                     <div v-if="isGameOver" class="flex flex-col justify-center">
                         <p class="my-6 text-5xl text-center text-white font-extrabold">{{ $t('buttons.wrongGuess') }}</p>
                         <buttonTemplate v-on:click="resetAllData" class="mx-auto my-4" label="buttons.tryAgain" v-bind:isSecondary="true" />

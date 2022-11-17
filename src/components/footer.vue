@@ -56,10 +56,7 @@ export default {
                 class="p-[2px] xl:p-1 3xl:p-[6px] h-8 w-8 xl:h-10 xl:w-10 3xl:h-12 3xl:w-12">
                 </buttonTemplate>
                 <transition
-                    enter-active-class="duration-300 ease-out"
-                    enter-from-class="transform opacity-0 translate-y-8"
-                    leave-active-class="duration-100 ease-in"
-                    leave-to-class="transform opacity-0 translate-y-8"
+                    name="slide"
                 >
                 <div :ref="key" tabindex="-1" v-on:blur="val.clicked = false" v-if="val.clicked" class="absolute bottom-[140%] left-0">
                     <langComponent v-if="key === 'lang'"

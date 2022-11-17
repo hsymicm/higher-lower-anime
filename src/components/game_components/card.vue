@@ -136,13 +136,7 @@ export default {
                     <cardButtonTemplate v-on:click="setState(true)" class="m-3" label="buttons.high" v-bind:isHigher="true" />
                     <cardButtonTemplate v-on:click="setState(false)" class="m-3" label="buttons.low" />
                 </div>
-
-                <transition
-                    enter-active-class="duration-300 ease-out"
-                    enter-from-class="transform opacity-0"
-                    leave-active-class="duration-300 ease-in"
-                    leave-to-class="transform opacity-0"
-                >
+                <transition name="fade">
                     <p v-if="showData || !choiceState" class="text-2xl text-white font-semibold">
                         {{ $t(`modes.${Object.keys(dataType)[0]}`) }}: 
                         <span v-bind="number = info?.[Object.keys(dataType)[0]]" class="text-green">

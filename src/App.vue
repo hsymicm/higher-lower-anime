@@ -8,10 +8,10 @@ export default {
   beforeMount() {
     let prefLang = localStorage.getItem('prefLang')
     if(!prefLang) {
-      prefLang = 'en'
-      localStorage.setItem('prefLang', prefLang)
+      localStorage.setItem('prefLang', 'en')
+    } else {
+      this.$i18n.locale = prefLang
     }
-    this.$i18n.locale = prefLang
   },
   data() {
     return {
@@ -55,28 +55,16 @@ export default {
       <a v-on:click="gameState = false" class="absolute z-[999] w-16 xl:w-24 3xl:w-28 top-[8vh] left-[6vw] transition-all hover:brightness-[1.5] active:brightness-[1.0] hover:cursor-pointer">
         <img src="./assets/img/home_icon.png" alt="Higher Lower Logo">
       </a>
+      
       <!-- CONTENT -->
-      <transition
-      enter-active-class="duration-300 ease-out"
-      enter-from-class="transform opacity-0 scale-[95%] translate-y-8"
-      enter-to-class="opacity-100 scale-100"
-      leave-active-class="duration-300 ease-in"
-      leave-from-class="opacity-100 scale-100"
-      leave-to-class="transform opacity-0 scale-[95%] translate-y-8"
-      >
+      <transition name="slide">
         <homeComponent v-if="!gameState" 
         :gameMode="modes[index]"
         v-on:buttonStartClick="setGameState"
         v-on:buttonModeClick="setMode" />
       </transition>
-      <transition
-        enter-active-class="duration-300 ease-out"
-        enter-from-class="transform opacity-0 scale-[95%] translate-y-8"
-        enter-to-class="opacity-100 scale-100"
-        leave-active-class="duration-300 ease-in"
-        leave-from-class="opacity-100 scale-100"
-        leave-to-class="transform opacity-0 scale-[95%] translate-y-8"
-      >
+
+      <transition name="slide">
         <gameComponent v-if="gameState" 
         :gameMode="modes[index]"
         v-on:buttonHomeClick="setGameState"
