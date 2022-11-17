@@ -34,3 +34,17 @@
         @apply scale-[.55] xl:scale-[.69] 3xl:scale-100
     }
 }
+
+.fade-enter-active, .slide-enter-active {
+    @apply duration-300 ease-out
+}
+.fade-leave-active, .slide-leave-active {
+    @apply duration-100 ease-in
+}
+
+.fade-enter-from, .fade-leave-to {
+    @apply transform opacity-0
+}
+.slide-enter-from, .slide-leave-to {
+    @apply transform opacity-0 translate-y-8
+}
