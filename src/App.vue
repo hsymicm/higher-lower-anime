@@ -91,4 +91,5 @@ export default {
     <div class="absolute bg-slate-dark h-[26%] w-screen z-20 inset-x-0 bottom-0"></div>
     <img src="./assets/img/header_bw.jpg" alt="Background Header" class="bg-cover object-cover w-full min-h-[75%] m-0 p-0">
   </div>
+
 </template>
